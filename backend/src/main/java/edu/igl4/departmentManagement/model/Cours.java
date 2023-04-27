@@ -11,7 +11,7 @@ public class Cours {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
+	long id;
 	
 	String nom;
 	
