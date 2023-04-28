@@ -1,9 +1,6 @@
 package edu.igl4.departmentManagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -18,6 +15,10 @@ public class Etudiant {
     private String adresse;
     private String telephone;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "section_id")
+    private Section section;
 
     public Etudiant() {
     }
