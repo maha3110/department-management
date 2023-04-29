@@ -1,6 +1,6 @@
 # department-management
 
-##to create affecation 
+to create affectation 
  POST /affectations
 ```json
 {
