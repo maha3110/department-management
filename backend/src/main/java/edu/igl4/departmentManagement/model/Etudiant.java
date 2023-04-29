@@ -20,7 +20,15 @@ public class Etudiant {
     @JoinColumn(name = "section_id")
     private Section section;
 
-    public Etudiant() {
+    public Section getSection() {
+		return section;
+	}
+
+	public void setSection(Section section) {
+		this.section = section;
+	}
+
+	public Etudiant() {
     }
 
     public Etudiant(String nom, String prenom, String dateNaissance, String adresse, String telephone, String email) {

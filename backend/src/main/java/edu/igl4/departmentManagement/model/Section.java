@@ -15,7 +15,7 @@ public class Section {
     private String annee;
 
     @OneToMany(mappedBy = "section")
-    private List<Etudiant> etudiant;
+    private List<Etudiant> etudiants;
 
     public Section() {
     }
@@ -57,6 +57,16 @@ public class Section {
     public void setAnnee(String annee) {
         this.annee = annee;
     }
+
+	public List<Etudiant> getEtudiants() {
+		return etudiants;
+	}
+
+	public void setEtudiants(List<Etudiant> etudiants) {
+		this.etudiants = etudiants;
+	}
+    
+    
 
 
 }
