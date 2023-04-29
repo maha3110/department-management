@@ -2,6 +2,8 @@ package edu.igl4.departmentManagement.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 public class Etudiant {
@@ -19,6 +21,17 @@ public class Etudiant {
     @ManyToOne
     @JoinColumn(name = "section_id")
     private Section section;
+
+    @OneToMany(mappedBy = "primaryKey.etudiant", cascade = CascadeType.ALL)
+    private List<Affectation> affectations;
+
+    public List<Affectation> getAffectations() {
+        return affectations;
+    }
+
+    public void setAffectations(List<Affectation> affectations) {
+        this.affectations = affectations;
+    }
 
     public Section getSection() {
 		return section;

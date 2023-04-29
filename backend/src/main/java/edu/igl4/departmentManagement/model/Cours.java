@@ -1,9 +1,8 @@
 package edu.igl4.departmentManagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -20,6 +19,17 @@ public class Cours {
 	float volumeHoraire;
 	
 	String type;
+
+	@OneToMany(mappedBy = "primaryKey.cours" , cascade = CascadeType.ALL)
+	private List<Affectation> affectations;
+
+	public List<Affectation> getAffectations() {
+		return affectations;
+	}
+
+	public void setAffectations(List<Affectation> affectations) {
+		this.affectations = affectations;
+	}
 
 	public Long getId() {
 		return id;
@@ -60,6 +70,7 @@ public class Cours {
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	
 	
 }
