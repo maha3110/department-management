@@ -7,4 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface AffectationRepository extends CrudRepository<Affectation, AffectationId> {
+    Affectation findByPrimaryKeyEtudiantIdAndPrimaryKeyCoursId(Long etudiantId, Long coursId);
 }
