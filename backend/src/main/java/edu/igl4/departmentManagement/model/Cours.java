@@ -20,10 +20,10 @@ public class Cours {
 	
 	String type;
 
-	@OneToMany(mappedBy = "primaryKey.cours" , cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cours")
 	private List<Affectation> affectations;
 
-	@OneToMany(mappedBy = "primaryKey.cours" , cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cours")
 	private List<Absence> absences;
 
 	@OneToMany(mappedBy = "cours")

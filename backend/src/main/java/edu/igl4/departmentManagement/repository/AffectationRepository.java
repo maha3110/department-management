@@ -9,7 +9,4 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface AffectationRepository extends CrudRepository<Affectation, AffectationId> {
-    Affectation findByPrimaryKeyEtudiantIdAndPrimaryKeyCoursId(Long etudiantId, Long coursId);
-    List<Affectation> findByPrimaryKeyEtudiantId(Long etudiantId);
-    List<Affectation> findByPrimaryKeyCoursId(Long coursId);
 }
