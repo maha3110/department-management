@@ -22,10 +22,10 @@ public class Etudiant {
     @JoinColumn(name = "section_id")
     private Section section;
 
-    @OneToMany(mappedBy = "etudiant")
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     private List<Affectation> affectations;
 
-    @OneToMany(mappedBy = "etudiant")
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     private List<Absence> absences;
 
     public List<Absence> getAbsences() {
