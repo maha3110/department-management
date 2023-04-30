@@ -1,9 +1,16 @@
 package edu.igl4.departmentManagement.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 
 import java.util.List;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Enseignant.class, name = "enseignant"),
+        @JsonSubTypes.Type(value = CadreAdministratif.class, name = "cadreAdministratif")
+})
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Personne {
