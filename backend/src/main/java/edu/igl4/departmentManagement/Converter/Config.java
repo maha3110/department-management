@@ -11,5 +11,7 @@ class Config implements RepositoryRestConfigurer {
     public void configureConversionService(ConfigurableConversionService conversionService) {
         conversionService.addConverter(new AssistIdConverter());
         conversionService.addConverter(new HoraireIdConverter());
+        conversionService.addConverter(new AffectationIdConverter());
+        conversionService.addConverter(new AbsenceIdConverter());
     }
 }
