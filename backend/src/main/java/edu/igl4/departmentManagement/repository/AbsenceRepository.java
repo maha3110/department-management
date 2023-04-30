@@ -1,7 +1,7 @@
 package edu.igl4.departmentManagement.repository;
 
 import edu.igl4.departmentManagement.model.Absence;
-import edu.igl4.departmentManagement.model.AbsenceId;
+import edu.igl4.departmentManagement.model.id.AbsenceId;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

@@ -1,5 +1,6 @@
 package edu.igl4.departmentManagement.model;
 
+import edu.igl4.departmentManagement.model.id.AbsenceId;
 import jakarta.persistence.*;
 
 @Entity

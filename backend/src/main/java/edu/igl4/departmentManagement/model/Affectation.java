@@ -1,5 +1,6 @@
 package edu.igl4.departmentManagement.model;
 
+import edu.igl4.departmentManagement.model.id.AffectationId;
 import jakarta.persistence.*;
 
 @Entity
