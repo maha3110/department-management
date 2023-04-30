@@ -25,6 +25,17 @@ public class Etudiant {
     @OneToMany(mappedBy = "primaryKey.etudiant", cascade = CascadeType.ALL)
     private List<Affectation> affectations;
 
+    @OneToMany(mappedBy = "primaryKey.etudiant", cascade = CascadeType.ALL)
+    private List<Absence> absences;
+
+    public List<Absence> getAbsences() {
+        return absences;
+    }
+
+    public void setAbsences(List<Absence> absences) {
+        this.absences = absences;
+    }
+
     public List<Affectation> getAffectations() {
         return affectations;
     }
