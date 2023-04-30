@@ -13,6 +13,18 @@ public class FichePointage {
     private String type;
     private String raison;
 
+    @ManyToOne
+    @JoinColumn(name = "personne_id")
+    private Personne personne;
+
+    public Personne getPersonne() {
+        return personne;
+    }
+
+    public void setPersonne(Personne personne) {
+        this.personne = personne;
+    }
+
     public FichePointage() {
     }
 
