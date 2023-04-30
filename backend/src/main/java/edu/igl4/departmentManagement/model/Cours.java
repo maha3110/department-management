@@ -26,6 +26,10 @@ public class Cours {
 	@OneToMany(mappedBy = "primaryKey.cours" , cascade = CascadeType.ALL)
 	private List<Absence> absences;
 
+	@OneToMany(mappedBy = "cours")
+	private List<Assist> assists;
+
+
 	public List<Absence> getAbsences() {
 		return absences;
 	}
@@ -40,14 +44,6 @@ public class Cours {
 
 	public void setAffectations(List<Affectation> affectations) {
 		this.affectations = affectations;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNom() {
@@ -82,6 +78,16 @@ public class Cours {
 		this.type = type;
 	}
 
-	
-	
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Assist> getAssists() {
+		return assists;
+	}
+
+	public void setAssists(List<Assist> assists) {
+		this.assists = assists;
+	}
 }
