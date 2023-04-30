@@ -17,6 +17,17 @@ public class Section {
     @OneToMany(mappedBy = "section")
     private List<Etudiant> etudiants;
 
+    @ManyToOne
+    Enseignant cordinateur;
+
+    public Enseignant getCordinateur() {
+        return cordinateur;
+    }
+
+    public void setCordinateur(Enseignant cordinateur) {
+        this.cordinateur = cordinateur;
+    }
+
     public Section() {
     }
 
