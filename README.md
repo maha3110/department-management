@@ -4,7 +4,7 @@ to create affectation
  POST /affectations
 ```json
 {
-"nom": "abcd",
+"note": 12,
 "annee": "1234",
 "cours": {
 "id": 1
