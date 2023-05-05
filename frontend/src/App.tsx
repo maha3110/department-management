@@ -1,13 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { SectionService } from './services/SectionService'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const sectionService = new SectionService();
+  const [sectionList, setSectionList] = useState(Array<Section>);
+  useEffect(() => {
+    sectionService.sectionsList().then(data => {
+      setSectionList(data);
+      console.log(data);
+    });
+  },[]);
+  
+
 
   return (
     <>
+      <div>{JSON.stringify(sectionList)}</div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
