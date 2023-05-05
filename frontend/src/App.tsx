@@ -5,15 +5,24 @@ import './App.css'
 import { SectionService } from './services/SectionService'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(2010);
   const sectionService = new SectionService();
+  const [sectionsByYear, setSectionsByYear] = useState(Array<Section>)
   const [sectionList, setSectionList] = useState(Array<Section>);
   useEffect(() => {
-    sectionService.sectionsList().then(data => {
+    sectionService.getAll().then(data => {
       setSectionList(data);
       console.log(data);
     });
   },[]);
+  useEffect(() => {
+    sectionService.getByAnneeScolaire(count).then(data => {
+      setSectionsByYear(data);
+      console.log(data);
+    })
+  }, [count])
+  
+
   
 
 
@@ -33,6 +42,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <div>{JSON.stringify(sectionsByYear)}</div>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
