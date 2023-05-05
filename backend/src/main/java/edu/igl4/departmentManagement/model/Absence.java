@@ -1,15 +1,22 @@
 package edu.igl4.departmentManagement.model;
 
+import edu.igl4.departmentManagement.model.id.AbsenceId;
 import jakarta.persistence.*;
 
 @Entity
-@AssociationOverrides(value = {
-        @AssociationOverride(name = "primaryKey.cours", joinColumns = @JoinColumn(name = "cours_id")),
-        @AssociationOverride(name = "primaryKey.etudiant", joinColumns = @JoinColumn(name = "etudiant_id"))
-})
 public class Absence {
     @EmbeddedId
-    private AbsenceId primaryKey = new AbsenceId();
+    private AbsenceId id = new AbsenceId();
+
+    @ManyToOne
+    @JoinColumn(name = "cours_id")
+    @MapsId("coursId")
+    Cours cours;
+
+    @ManyToOne
+    @JoinColumn(name = "etudiant_id")
+    @MapsId("etudiantId")
+    Etudiant etudiant;
 
     private String horaires;
     private String date;
@@ -18,37 +25,35 @@ public class Absence {
     public Absence() {
     }
 
-    public Absence(AbsenceId primaryKey, String horaires, String date, Boolean raison) {
-        this.primaryKey = primaryKey;
+    public Absence(AbsenceId id, String horaires, String date, Boolean raison) {
+        this.id = id;
         this.horaires = horaires;
         this.date = date;
         this.raison = raison;
     }
 
-    public AbsenceId getPrimaryKey() {
-        return primaryKey;
+    public AbsenceId getId() {
+        return id;
     }
 
-    public void setPrimaryKey(AbsenceId primaryKey) {
-        this.primaryKey = primaryKey;
+    public void setId(AbsenceId id) {
+        this.id = id;
     }
 
-    @Transient
     public Cours getCours() {
-        return getPrimaryKey().getCours();
+        return cours;
     }
 
     public void setCours(Cours cours) {
-        getPrimaryKey().setCours(cours);
+        this.cours = cours;
     }
 
-    @Transient
     public Etudiant getEtudiant() {
-        return getPrimaryKey().getEtudiant();
+        return etudiant;
     }
 
     public void setEtudiant(Etudiant etudiant) {
-        getPrimaryKey().setEtudiant(etudiant);
+        this.etudiant = etudiant;
     }
 
     public String getHoraires() {

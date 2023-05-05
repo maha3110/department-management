@@ -1,60 +1,66 @@
 package edu.igl4.departmentManagement.model;
 
+import edu.igl4.departmentManagement.model.id.AffectationId;
 import jakarta.persistence.*;
 
 @Entity
-@AssociationOverrides(value = {
-        @AssociationOverride(name = "primaryKey.cours", joinColumns = @JoinColumn(name = "cours_id")),
-        @AssociationOverride(name = "primaryKey.etudiant", joinColumns = @JoinColumn(name = "etudiant_id"))
-})
 public class Affectation {
-    @EmbeddedId
-    private AffectationId primaryKey = new AffectationId();
 
-    private String nom;
+    @EmbeddedId
+    private AffectationId id = new AffectationId();
+
+    @ManyToOne
+    @JoinColumn(name = "cours_id")
+    @MapsId("coursId")
+    Cours cours;
+
+    @ManyToOne
+    @JoinColumn(name = "etudiant_id")
+    @MapsId("etudiantId")
+    Etudiant etudiant;
+
+    private int note;
     private String annee;
 
     public Affectation() {
     }
 
-    public Affectation(AffectationId primaryKey, String nom, String annee) {
-        this.primaryKey = primaryKey;
-        this.nom = nom;
+    public Affectation(AffectationId id, int note, String annee) {
+        this.id = id;
+        this.note = note;
         this.annee = annee;
     }
 
-    public AffectationId getPrimaryKey() {
-        return primaryKey;
+    public AffectationId getId() {
+        return id;
     }
 
-    public void setPrimaryKey(AffectationId primaryKey) {
-        this.primaryKey = primaryKey;
+    public void setId(AffectationId id) {
+        this.id = id;
     }
 
-    @Transient
     public Cours getCours() {
-        return getPrimaryKey().getCours();
+        return cours;
     }
 
     public void setCours(Cours cours) {
-        getPrimaryKey().setCours(cours);
+        this.cours = cours;
     }
 
-    @Transient
     public Etudiant getEtudiant() {
-        return getPrimaryKey().getEtudiant();
+        return etudiant;
     }
 
     public void setEtudiant(Etudiant etudiant) {
-        getPrimaryKey().setEtudiant(etudiant);
+        this.etudiant = etudiant;
     }
 
-    public String getNom() {
-        return nom;
+    public int getNote() {
+        return note;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNote(int note) {
+        this.note = note;
     }
 
     public String getAnnee() {

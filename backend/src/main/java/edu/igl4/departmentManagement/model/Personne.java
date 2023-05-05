@@ -1,16 +1,22 @@
 package edu.igl4.departmentManagement.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 
 import java.util.List;
 
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Enseignant.class, name = "enseignant"),
+        @JsonSubTypes.Type(value = CadreAdministratif.class, name = "cadreAdministratif")
+})
 @Entity
-public class Etudiant {
-
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String nom;
     private String prenom;
     private String dateNaissance;
@@ -18,44 +24,21 @@ public class Etudiant {
     private String telephone;
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "section_id")
-    private Section section;
+    @OneToMany(mappedBy = "personne", cascade = CascadeType.ALL)
+    private List<FichePointage> fichePointages;
 
-    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private List<Affectation> affectations;
-
-    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private List<Absence> absences;
-
-    public List<Absence> getAbsences() {
-        return absences;
+    public List<FichePointage> getFichePointages() {
+        return fichePointages;
     }
 
-    public void setAbsences(List<Absence> absences) {
-        this.absences = absences;
+    public void setFichePointages(List<FichePointage> fichePointages) {
+        this.fichePointages = fichePointages;
     }
 
-    public List<Affectation> getAffectations() {
-        return affectations;
+    public Personne() {
     }
 
-    public void setAffectations(List<Affectation> affectations) {
-        this.affectations = affectations;
-    }
-
-    public Section getSection() {
-		return section;
-	}
-
-	public void setSection(Section section) {
-		this.section = section;
-	}
-
-	public Etudiant() {
-    }
-
-    public Etudiant(String nom, String prenom, String dateNaissance, String adresse, String telephone, String email) {
+    public Personne(String nom, String prenom, String dateNaissance, String adresse, String telephone, String email) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -64,11 +47,11 @@ public class Etudiant {
         this.email = email;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -119,5 +102,4 @@ public class Etudiant {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }
