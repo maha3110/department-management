@@ -5,9 +5,9 @@ import './App.css'
 import { SectionService } from './services/SectionService'
 
 function App() {
-  const [count, setCount] = useState(2010);
+  const [id, setId] = useState(1);
   const sectionService = new SectionService();
-  const [sectionsByYear, setSectionsByYear] = useState(Array<Section>)
+  const [sectionById, setSectionById] = useState({})
   const [sectionList, setSectionList] = useState(Array<Section>);
   useEffect(() => {
     sectionService.getAll().then(data => {
@@ -16,11 +16,11 @@ function App() {
     });
   },[]);
   useEffect(() => {
-    sectionService.getByAnneeScolaire(count).then(data => {
-      setSectionsByYear(data);
+    sectionService.getById(id).then(data => {
+      setSectionById(data);
       console.log(data);
     })
-  }, [count])
+  }, [id])
   
 
   
@@ -39,10 +39,10 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => setId((id) => id + 1)}>
+          id is {id}
         </button>
-        <div>{JSON.stringify(sectionsByYear)}</div>
+        <div>{JSON.stringify(sectionById)}</div>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
