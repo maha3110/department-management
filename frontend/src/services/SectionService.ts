@@ -39,4 +39,11 @@ export class SectionService {
       );
     return data;
   }
+
+  public async getById(id : number):Promise<Section>{
+    const response = await fetch(
+      "https://my.api.mockaroo.com/section/"+id.toString()+"?key=886ff760"
+    );
+    return await response.json();
+  }
 }
