@@ -3,6 +3,8 @@ package edu.igl4.departmentManagement.model;
 import edu.igl4.departmentManagement.model.id.AbsenceId;
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Absence {
     @EmbeddedId
@@ -18,19 +20,12 @@ public class Absence {
     @MapsId("etudiantId")
     Etudiant etudiant;
 
-    private String horaires;
-    private String date;
-    private Boolean raison;
+    private Date date;
+    private Boolean estJustifie;
 
     public Absence() {
     }
 
-    public Absence(AbsenceId id, String horaires, String date, Boolean raison) {
-        this.id = id;
-        this.horaires = horaires;
-        this.date = date;
-        this.raison = raison;
-    }
 
     public AbsenceId getId() {
         return id;
@@ -38,6 +33,15 @@ public class Absence {
 
     public void setId(AbsenceId id) {
         this.id = id;
+    }
+
+
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
+
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 
     public Cours getCours() {
@@ -48,35 +52,20 @@ public class Absence {
         this.cours = cours;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    public Boolean getEstJustifie() {
+        return estJustifie;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setEstJustifie(Boolean estJustifie) {
+        this.estJustifie = estJustifie;
     }
 
-    public String getHoraires() {
-        return horaires;
-    }
-
-    public void setHoraires(String horaires) {
-        this.horaires = horaires;
-    }
-
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public Boolean getRaison() {
-        return raison;
-    }
-
-    public void setRaison(Boolean raison) {
-        this.raison = raison;
-    }
 }

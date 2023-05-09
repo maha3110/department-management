@@ -9,18 +9,18 @@ import java.util.Objects;
 @Embeddable
 public class HoraireId implements Serializable {
 
-    @Column(name = "cours_id")
-    long coursId;
+    @Column(name = "assist_id")
+    long assistId;
 
     @Column(name = "salle_id")
     long salleId;
 
-    public long getCoursId() {
-        return coursId;
+    public long getassistId() {
+        return assistId;
     }
 
-    public void setCoursId(long coursId) {
-        this.coursId = coursId;
+    public void setassistId(long assistId) {
+        this.assistId = assistId;
     }
 
     public long getSalleId() {
@@ -33,7 +33,7 @@ public class HoraireId implements Serializable {
 
     @Override
     public String toString() {
-        return "@" + coursId + "-" + salleId ;
+        return "@" + assistId + "-" + salleId ;
     }
 
     @Override
@@ -41,12 +41,12 @@ public class HoraireId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HoraireId horaireId = (HoraireId) o;
-        return coursId == horaireId.coursId && salleId == horaireId.salleId;
+        return assistId == horaireId.assistId && salleId == horaireId.salleId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(coursId, salleId);
+        return Objects.hash(assistId, salleId);
     }
 }
 

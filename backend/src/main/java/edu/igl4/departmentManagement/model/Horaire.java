@@ -5,6 +5,7 @@ import edu.igl4.departmentManagement.model.id.HoraireId;
 import jakarta.persistence.*;
 
 import java.time.DayOfWeek;
+import java.time.LocalTime;
 
 
 
@@ -15,21 +16,21 @@ public class Horaire {
     HoraireId id = new HoraireId();
 
     @ManyToOne
-    @JoinColumn(name = "cours_id")
-    @MapsId("coursId")
-    Cours cours;
+    @JoinColumn(name = "assist_id")
+    @MapsId("assistId")
+    Assist assist;
 
     @ManyToOne
     @JoinColumn(name = "salle_id")
     @MapsId("salleId")
     Salle salle;
 
-    String annee;
-
-    int semestre;
     DayOfWeek jour;
 
-    String horaire;
+    LocalTime heureDebut;
+
+    float duree;
+
 
     public HoraireId getId() {
         return id;
@@ -39,13 +40,6 @@ public class Horaire {
         this.id = id;
     }
 
-    public Cours getCours() {
-        return cours;
-    }
-
-    public void setCours(Cours cours) {
-        this.cours = cours;
-    }
 
     public Salle getSalle() {
         return salle;
@@ -55,20 +49,12 @@ public class Horaire {
         this.salle = salle;
     }
 
-    public String getAnnee() {
-        return annee;
+    public Assist getAssist() {
+        return assist;
     }
 
-    public void setAnnee(String annee) {
-        this.annee = annee;
-    }
-
-    public int getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
+    public void setAssist(Assist assist) {
+        this.assist = assist;
     }
 
     public DayOfWeek getJour() {
@@ -79,11 +65,19 @@ public class Horaire {
         this.jour = jour;
     }
 
-    public String getHoraire() {
-        return horaire;
+    public LocalTime getHeureDebut() {
+        return heureDebut;
     }
 
-    public void setHoraire(String horaire) {
-        this.horaire = horaire;
+    public void setHeureDebut(LocalTime heureDebut) {
+        this.heureDebut = heureDebut;
+    }
+
+    public float getDuree() {
+        return duree;
+    }
+
+    public void setDuree(float duree) {
+        this.duree = duree;
     }
 }

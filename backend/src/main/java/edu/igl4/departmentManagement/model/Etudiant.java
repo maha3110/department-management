@@ -18,12 +18,9 @@ public class Etudiant {
     private String telephone;
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "section_id")
-    private Section section;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private List<Affectation> affectations;
+    private List<Inscription> inscriptions;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     private List<Absence> absences;
@@ -36,21 +33,13 @@ public class Etudiant {
         this.absences = absences;
     }
 
-    public List<Affectation> getAffectations() {
-        return affectations;
+    public List<Inscription> getAffectations() {
+        return inscriptions;
     }
 
-    public void setAffectations(List<Affectation> affectations) {
-        this.affectations = affectations;
+    public void setAffectations(List<Inscription> inscriptions) {
+        this.inscriptions = inscriptions;
     }
-
-    public Section getSection() {
-		return section;
-	}
-
-	public void setSection(Section section) {
-		this.section = section;
-	}
 
 	public Etudiant() {
     }

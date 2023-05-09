@@ -12,30 +12,20 @@ public class Section {
     private long id;
     private String nom;
     private String niveau;
-    private String annee;
+
 
     @OneToMany(mappedBy = "section")
-    private List<Etudiant> etudiants;
+    private List<Inscription> inscription;
 
     @ManyToOne
     Enseignant cordinateur;
 
-    public Enseignant getCordinateur() {
-        return cordinateur;
-    }
 
-    public void setCordinateur(Enseignant cordinateur) {
-        this.cordinateur = cordinateur;
-    }
 
     public Section() {
     }
 
-    public Section(String nom, String niveau, String annee) {
-        this.nom = nom;
-        this.niveau = niveau;
-        this.annee = annee;
-    }
+
 
     public long getId() {
         return id;
@@ -61,21 +51,21 @@ public class Section {
         this.niveau = niveau;
     }
 
-    public String getAnnee() {
-        return annee;
+    public List<Inscription> getInscription() {
+        return inscription;
     }
 
-    public void setAnnee(String annee) {
-        this.annee = annee;
+    public void setInscription(List<Inscription> inscription) {
+        this.inscription = inscription;
     }
 
-	public List<Etudiant> getEtudiants() {
-		return etudiants;
-	}
+    public Enseignant getCordinateur() {
+        return cordinateur;
+    }
 
-	public void setEtudiants(List<Etudiant> etudiants) {
-		this.etudiants = etudiants;
-	}
+    public void setCordinateur(Enseignant cordinateur) {
+        this.cordinateur = cordinateur;
+    }
     
     
 
