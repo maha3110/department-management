@@ -1,33 +1,29 @@
 package edu.igl4.departmentManagement.model;
 
-import edu.igl4.departmentManagement.model.id.AssisteId;
 import jakarta.persistence.*;
 
 @Entity
 public class Assist {
 
-    @EmbeddedId
-    AssisteId id = new AssisteId();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long id;
 
     @ManyToOne
-    @JoinColumn(name = "cours_id")
-    @MapsId("coursId")
     Cours cours;
 
     @ManyToOne
-    @JoinColumn(name = "enseignant_id")
-    @MapsId("enseignantId")
     Enseignant enseignant;
 
     String annee;
 
     int semestre;
 
-    public AssisteId getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(AssisteId id) {
+    public void setId(long id) {
         this.id = id;
     }
 

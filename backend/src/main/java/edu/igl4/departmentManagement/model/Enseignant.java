@@ -10,19 +10,11 @@ public class Enseignant extends Personne {
 
     private String grade;
 
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
-    }
-
     @OneToMany(mappedBy = "enseignant")
     private List<Assist> assists;
 
     @OneToMany(mappedBy = "cordinateur")
-    private List<Section> sections;
+    private List<Section> sectionsCordinees;
 
     public List<Assist> getAssists() {
         return assists;
@@ -38,5 +30,13 @@ public class Enseignant extends Personne {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public List<Section> getSectionsCordinees() {
+        return sectionsCordinees;
+    }
+
+    public void setSectionsCordinees(List<Section> sectionsCordinees) {
+        this.sectionsCordinees = sectionsCordinees;
     }
 }

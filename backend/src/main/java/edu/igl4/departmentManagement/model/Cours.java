@@ -20,30 +20,14 @@ public class Cours {
 	
 	String type;
 
-	@OneToMany(mappedBy = "cours", cascade = CascadeType.ALL)
-	private List<Affectation> affectations;
-
-	@OneToMany(mappedBy = "cours", cascade = CascadeType.ALL)
-	private List<Absence> absences;
-
 	@OneToMany(mappedBy = "cours")
 	private List<Assist> assists;
 
-
-	public List<Absence> getAbsences() {
-		return absences;
+	public long getId() {
+		return id;
 	}
-
-	public void setAbsences(List<Absence> absences) {
-		this.absences = absences;
-	}
-
-	public List<Affectation> getAffectations() {
-		return affectations;
-	}
-
-	public void setAffectations(List<Affectation> affectations) {
-		this.affectations = affectations;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -76,11 +60,6 @@ public class Cours {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public List<Assist> getAssists() {
