@@ -1,4 +1,4 @@
-package edu.igl4.departmentManagement.Converter;
+package edu.igl4.departmentManagement.model.id.Converter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.support.ConfigurableConversionService;
@@ -9,9 +9,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 class Config implements RepositoryRestConfigurer {
     @Override
     public void configureConversionService(ConfigurableConversionService conversionService) {
-        conversionService.addConverter(new AssistIdConverter());
         conversionService.addConverter(new HoraireIdConverter());
-        conversionService.addConverter(new AffectationIdConverter());
-        conversionService.addConverter(new AbsenceIdConverter());
+        conversionService.addConverter(new NoteIdConverter());
     }
 }

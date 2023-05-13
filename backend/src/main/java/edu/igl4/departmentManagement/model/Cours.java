@@ -9,7 +9,7 @@ import java.util.List;
 public class Cours {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	
 	String nom;
@@ -19,6 +19,9 @@ public class Cours {
 	float volumeHoraire;
 	
 	String type;
+
+	@ManyToMany(mappedBy = "cours")
+	private List<Section> sections;
 
 	@OneToMany(mappedBy = "cours")
 	private List<Assist> assists;
@@ -68,5 +71,13 @@ public class Cours {
 
 	public void setAssists(List<Assist> assists) {
 		this.assists = assists;
+	}
+
+	public List<Section> getSections() {
+		return sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
 	}
 }

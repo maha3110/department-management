@@ -1,37 +1,38 @@
 package edu.igl4.departmentManagement.model;
 
-import edu.igl4.departmentManagement.model.id.AbsenceId;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"cours_id", "etudiant_id", "date"}) )
 public class Absence {
-    @EmbeddedId
-    private AbsenceId id = new AbsenceId();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
 
     @ManyToOne
     @JoinColumn(name = "cours_id")
-    @MapsId("coursId")
     Cours cours;
 
     @ManyToOne
     @JoinColumn(name = "etudiant_id")
-    @MapsId("etudiantId")
     Etudiant etudiant;
 
+    @Column(name = "date")
     private Date date;
+
     private Boolean estJustifie;
 
     public Absence() {
     }
 
 
-    public AbsenceId getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(AbsenceId id) {
+    public void setId(long id) {
         this.id = id;
     }
 

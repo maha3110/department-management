@@ -8,7 +8,7 @@ import java.util.List;
 public class Section {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nom;
     private String niveau;
@@ -19,6 +19,9 @@ public class Section {
 
     @ManyToOne
     Enseignant cordinateur;
+
+    @ManyToMany
+    List<Cours> cours;
 
 
 
@@ -66,8 +69,12 @@ public class Section {
     public void setCordinateur(Enseignant cordinateur) {
         this.cordinateur = cordinateur;
     }
-    
-    
 
+    public List<Cours> getCours() {
+        return cours;
+    }
 
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
+    }
 }

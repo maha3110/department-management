@@ -41,8 +41,7 @@ public class AffectationId implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AffectationId)) return false;
-        AffectationId that = (AffectationId) o;
+        if (!(o instanceof AffectationId that)) return false;
         return getCoursId() == that.getCoursId() && getEtudiantId() == that.getEtudiantId();
     }
 }

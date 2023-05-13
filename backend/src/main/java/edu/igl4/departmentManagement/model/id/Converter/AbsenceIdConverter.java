@@ -1,4 +1,4 @@
-package edu.igl4.departmentManagement.Converter;
+package edu.igl4.departmentManagement.model.id.Converter;
 
 import edu.igl4.departmentManagement.model.id.AbsenceId;
 import edu.igl4.departmentManagement.model.id.HoraireId;
