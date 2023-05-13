@@ -1,10 +1,10 @@
-interface Section {
+interface SectionBrief {
   id: number;
-  name: string;
+  nom: string;
   niveau: number;
-  annee_scolaire: string;
 }
 
-interface SectionDetail extends Section {
+interface Section extends SectionBrief {
   cours: Array<Cours>;
+  cordinateur: any;
 }

@@ -1,47 +1,47 @@
 import { Utils } from "./Utils";
 
-const RESOURCE_NAME = "etudiants";
-const PROJECTIONS = ["etudiants", "etudiantDetail"];
+const RESOURCE_NAME = "courses";
+const PROJECTIONS = "cours";
 
-export const EtudiantService = {
+export const CoursService = {
   getAll: async (
     page: PageParams = { page: 0, size: 20, sort: "nom" }
-  ): Promise<{ data: Array<EtudiantBrief>; pageInfo: PageInfo }> => {
+  ): Promise<{ data: Array<Cours>; pageInfo: PageInfo }> => {
     const params = Utils.pageInfoToParams(page);
     const url = Utils.generateUrl(
       RESOURCE_NAME,
       undefined,
-      PROJECTIONS[0],
+      PROJECTIONS,
       params
     );
     const response = await fetch(url);
     return await response.json().then((result) => {
       return {
-        data: result._embedded.etudiants.map(format),
+        data: result._embedded.courses.map(format),
         pageInfo: result.page,
       };
     });
   },
-  getById: async (id: number): Promise<Etudiant> => {
-    const url = Utils.generateUrl(RESOURCE_NAME, id, PROJECTIONS[1]);
+  getById: async (id: number): Promise<Cours> => {
+    const url = Utils.generateUrl(RESOURCE_NAME, id, PROJECTIONS);
     const response = await fetch(url);
     return await response.json().then(format);
   },
-  add: async (etudiant: Omit<Etudiant, "id">): Promise<Etudiant> => {
+  add: async (cours: Omit<Cours, "id">): Promise<Cours> => {
     const response = await fetch(
-      Utils.generateUrl(RESOURCE_NAME, undefined, PROJECTIONS[1]),
+      Utils.generateUrl(RESOURCE_NAME, undefined, PROJECTIONS),
       {
         method: "POST",
-        body: JSON.stringify(etudiant),
+        body: JSON.stringify(cours),
       }
     );
     return await response.json().then(format);
   },
-  update: async (etudiant: Etudiant): Promise<boolean> => {
-    const id = etudiant.id;
+  update: async (cours: Cours): Promise<boolean> => {
+    const id = cours.id;
     const response = await fetch(Utils.generateUrl(RESOURCE_NAME, id), {
       method: "PUT",
-      body: JSON.stringify(etudiant),
+      body: JSON.stringify(cours),
     });
     return response.ok;
   },
@@ -56,11 +56,9 @@ export const EtudiantService = {
 function format(data: any) {
   return {
     id: Utils.getIdFromLink(data) as number,
+    code: data.code,
     nom: data.nom,
-    prenom: data.prenom,
-    dateNaissance: data.dateNaissance,
-    email: data?.email,
-    adresse: data?.adresse,
-    telephone: data?.telephone,
+    volumeHoraire: data.volumeHoraire,
+    type: data.type,
   };
 }

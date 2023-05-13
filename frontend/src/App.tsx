@@ -3,41 +3,54 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { EtudiantService } from "./services/EtudiantService";
-//import { SectionService } from './services/SectionService'
+import { SectionService } from './services/SectionService'
+import { CoursService } from "./services/CoursService";
 
 function App() {
   const [id, setId] = useState(1);
-  /*const sectionService = new SectionService();
+  /*
   const [sectionById, setSectionById] = useState({})
   const [sectionList, setSectionList] = useState(Array<Section>);
   useEffect(() => {
-    sectionService.getAll().then(data => {
+    SectionService.getAll().then(data => {
       setSectionList(data);
-      console.log(data);
+
     });
   },[]);
   useEffect(() => {
-    sectionService.getById(id).then(data => {
+    SectionService.getById(id).then(data => {
       setSectionById(data);
-      console.log(data);
+
     })
   }, [id])*/
 
   const [etudiants, setEtudiants] = useState(Array<EtudiantBrief>);
+  const [sectionList, setSectionList] = useState(Array<SectionBrief>);
+  const [cours, setCours] = useState(Array<Cours>);
+
+
   useEffect(() => {
     EtudiantService.getAll().then(data => setEtudiants(data.data));
+    SectionService.getAll().then(({data}) => setSectionList(data));
+    CoursService.getAll().then(({data}) => setCours(data));
   }, []);
 
   const [etudiant, setEtudiant] = useState({});
+  const [section, setSection] = useState({});
+const[coursById, setCoursById] = useState({});
+
   useEffect(() => {
     EtudiantService.getById(id).then(setEtudiant);
+    SectionService.getById(id).then(setSection);
+    CoursService.getById(id).then(setCoursById);
   }, [id])
   
 
   return (
     <>
-      {/* <div>{JSON.stringify(sectionList)}</div> */}
+    <div>{JSON.stringify(sectionList)}</div> 
       <div>{JSON.stringify(etudiants)}</div>
+      <div>{JSON.stringify(cours)}</div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -49,8 +62,9 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setId((id) => id + 1)}>id is {id}</button>
-        {/* <div>{JSON.stringify(sectionById)}</div> */}
+        <div>{JSON.stringify(section)}</div>
         <div>{JSON.stringify(etudiant)}</div>
+        <div>{JSON.stringify(coursById)}</div>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
