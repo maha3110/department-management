@@ -9,7 +9,7 @@ import java.util.List;
 public class Etudiant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nom;
     private String prenom;
@@ -33,11 +33,11 @@ public class Etudiant {
         this.absences = absences;
     }
 
-    public List<Inscription> getAffectations() {
+    public List<Inscription> getInscriptions() {
         return inscriptions;
     }
 
-    public void setAffectations(List<Inscription> inscriptions) {
+    public void setInscriptions(List<Inscription> inscriptions) {
         this.inscriptions = inscriptions;
     }
 

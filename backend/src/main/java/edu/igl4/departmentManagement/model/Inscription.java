@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"etudiant_id", "section_id", "annee_scolaire"}) )
 public class Inscription {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Entity
 public class FichePointage {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String date;
     private String periode;
