@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { SectionService } from './services/SectionService'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { EtudiantService } from "./services/EtudiantService";
+//import { SectionService } from './services/SectionService'
 
 function App() {
   const [id, setId] = useState(1);
-  const sectionService = new SectionService();
+  /*const sectionService = new SectionService();
   const [sectionById, setSectionById] = useState({})
   const [sectionList, setSectionList] = useState(Array<Section>);
   useEffect(() => {
@@ -20,15 +21,23 @@ function App() {
       setSectionById(data);
       console.log(data);
     })
+  }, [id])*/
+
+  const [etudiants, setEtudiants] = useState(Array<EtudiantBrief>);
+  useEffect(() => {
+    EtudiantService.getAll().then(data => setEtudiants(data.data));
+  }, []);
+
+  const [etudiant, setEtudiant] = useState({});
+  useEffect(() => {
+    EtudiantService.getById(id).then(setEtudiant);
   }, [id])
   
 
-  
-
-
   return (
     <>
-      <div>{JSON.stringify(sectionList)}</div>
+      {/* <div>{JSON.stringify(sectionList)}</div> */}
+      <div>{JSON.stringify(etudiants)}</div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -39,10 +48,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setId((id) => id + 1)}>
-          id is {id}
-        </button>
-        <div>{JSON.stringify(sectionById)}</div>
+        <button onClick={() => setId((id) => id + 1)}>id is {id}</button>
+        {/* <div>{JSON.stringify(sectionById)}</div> */}
+        <div>{JSON.stringify(etudiant)}</div>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -51,7 +59,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
