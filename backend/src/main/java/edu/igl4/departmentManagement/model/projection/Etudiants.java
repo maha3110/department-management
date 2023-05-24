@@ -5,6 +5,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 @Projection(name = "etudiants", types = {Etudiant.class})
 public interface Etudiants {
+    long getId();
     String getNom();
     String getPrenom();
     String getDateNaissance();

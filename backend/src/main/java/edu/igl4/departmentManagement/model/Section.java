@@ -14,8 +14,8 @@ public class Section {
     private String niveau;
 
 
-    @OneToMany(mappedBy = "section")
-    private List<Inscription> inscription;
+    /*@OneToMany(mappedBy = "section")
+    private List<Inscription> inscription;*/
 
     @ManyToOne
     Enseignant cordinateur;
@@ -53,14 +53,14 @@ public class Section {
     public void setNiveau(String niveau) {
         this.niveau = niveau;
     }
-
+/*
     public List<Inscription> getInscription() {
         return inscription;
     }
 
     public void setInscription(List<Inscription> inscription) {
         this.inscription = inscription;
-    }
+    }*/
 
     public Enseignant getCordinateur() {
         return cordinateur;
