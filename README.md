@@ -4,13 +4,13 @@ The Department Management System is a Java-based solution developed to enhance a
 
 # Key Features:
 
-Student Management: Robust backend for managing student data, including enrollment, registration, and academic progress tracking.
-Course Scheduling: Backend support for creating and managing course schedules, including class times, instructors, and room assignments.
-Teacher Assignment: Backend logic for assigning faculty members to courses, tracking availability, and teaching responsibilities.
-Resource Allocation: Backend handling of resource allocation, such as classrooms.
+<b>Student Management:</b> Robust backend for managing student data, including enrollment, registration, and academic progress tracking.
+<b>Course Scheduling:</b> Backend support for creating and managing course schedules, including class times, instructors, and room assignments.
+<b>Teacher Assignment:</b> Backend logic for assigning faculty members to courses, tracking availability, and teaching responsibilities.
+<b>Resource Allocation:</b> Backend handling of resource allocation, such as classrooms.
 # Technologies Used:
 
-Java: The project leveraged Java for its reliability and flexibility in developing the backend logic.
-Spring Data REST: Spring Data REST was employed to create a RESTful API, providing a standardized interface for future frontend development.
-H2 Database: H2 served as the in-memory database for efficient data storage and retrieval.
-Git/GitHub: Version control was managed using Git, with the code hosted on GitHub.
+<b>Java:</b> The project leveraged Java for its reliability and flexibility in developing the backend logic.<br>
+<b>Spring Data REST:</b> Spring Data REST was employed to create a RESTful API, providing a standardized interface for future frontend development.<br>
+<b>H2 Database:</b> H2 served as the in-memory database for efficient data storage and retrieval.<br>
+<b>Git/GitHub:</b> Version control was managed using Git, with the code hosted on GitHub.
