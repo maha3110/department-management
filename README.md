@@ -4,9 +4,9 @@ The Department Management System is a Java-based solution developed to enhance a
 
 # Key Features:
 
-<b>Student Management:</b> Robust backend for managing student data, including enrollment, registration, and academic progress tracking.
-<b>Course Scheduling:</b> Backend support for creating and managing course schedules, including class times, instructors, and room assignments.
-<b>Teacher Assignment:</b> Backend logic for assigning faculty members to courses, tracking availability, and teaching responsibilities.
+<b>Student Management:</b> Robust backend for managing student data, including enrollment, registration, and academic progress tracking.<br>
+<b>Course Scheduling:</b> Backend support for creating and managing course schedules, including class times, instructors, and room assignments.<br>
+<b>Teacher Assignment:</b> Backend logic for assigning faculty members to courses, tracking availability, and teaching responsibilities.<br>
 <b>Resource Allocation:</b> Backend handling of resource allocation, such as classrooms.
 # Technologies Used:
 
